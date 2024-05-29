@@ -1,0 +1,152 @@
+name: 'All Surabaya School'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/schools
+    metadata:
+      groupName: 'All Surabaya School'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display a listing of the school in Surabaya.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Api-Key: '{YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"message":"success","data":[{"id":1,"name":"sekolah citra berkat","address":"wadaw","postal_code":22312,"school_type":"SD","phone_number":2131231231},{"id":2,"name":"sekolah citra berkat","address":"wadaw","postal_code":22312,"school_type":"SMP","phone_number":2131231231},{"id":3,"name":"sekolah citra berkat","address":"wadaw","postal_code":22312,"school_type":"SMA","phone_number":2131231231}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Api-Key
+      - bVkPd48aZg6e63hf5cvDE1a
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/schools/name/{name}'
+    metadata:
+      groupName: 'All Surabaya School'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display the specified school in surabaya by name.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Api-Key: '{YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      name:
+        name: name
+        description: 'The school name.'
+        required: true
+        example: 'sekolah citra berkat'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanUrlParameters:
+      name: 'sekolah citra berkat'
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"message":"success","data":{"id":1,"name":"sekolah citra berkat","address":"wadaw","postal_code":22312,"school_type":"SD","phone_number":2131231231}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Api-Key
+      - 8Vcvd3ekaEhgZ6b14aD56Pf
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/schools/postal/{postal_code}'
+    metadata:
+      groupName: 'All Surabaya School'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display the specified school in surabaya by postal code.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Api-Key: '{YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      postal_code:
+        name: postal_code
+        description: 'The school name.'
+        required: true
+        example: 22312
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanUrlParameters:
+      postal_code: 22312
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"message":"success","data":{"id":1,"name":"sekolah citra berkat","address":"wadaw","postal_code":22312,"school_type":"SD","phone_number":2131231231}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Api-Key
+      - a6aZ3E6hP5vDk8gef41cbdV
+    controller: null
+    method: null
+    route: null
+    custom: []
