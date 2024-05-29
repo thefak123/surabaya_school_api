@@ -1,0 +1,35 @@
+{
+	"info": {
+		"_postman_id": "202ef93a-8056-4e66-8467-436727e38f46",
+		"name": "cloud computing project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "request all schools",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "aec6ae8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/schools",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"schools"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
