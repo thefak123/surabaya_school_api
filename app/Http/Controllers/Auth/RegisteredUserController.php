@@ -34,11 +34,14 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-        $api_key = substr(md5(mt_rand()), 0, 7);
+        // Generate API key secara random dengan range 20 character
+        $api_key = substr(md5(mt_rand()), 0, 20);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            // Memasukan API_KEY kedalam database
             'API_KEY' => $api_key,
         ]);
 

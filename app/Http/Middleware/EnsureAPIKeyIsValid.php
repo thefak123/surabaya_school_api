@@ -17,6 +17,7 @@ class EnsureAPIKeyIsValid
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // Penambahan header x-api-key untuk check data api
         if ($request->header('x-api-key') != null) {
             $user = User::where("API_KEY", $request->header('x-api-key'))->first();
             if($user == null){

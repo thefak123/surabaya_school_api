@@ -9,7 +9,11 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+// Penambahan middleware(EnsureAPIKeyIsValid::class); untuk melakukan pengecekan, jadi jika mau menjalankan Route::get('/schools', [SchoolController::class, "index"])->middleware(EnsureAPIKeyIsValid::class);
+// Maka harus melewati proses middleware
 Route::get('/schools', [SchoolController::class, "index"])->middleware(EnsureAPIKeyIsValid::class);
+
+
 Route::get('/schools/name/{name}', [SchoolController::class, "findByName"]);
 Route::get('/schools/postal/{postal_code}', [SchoolController::class, "findByPostalCode"]);
 Route::get('/schools/elementary', [SchoolController::class, "findAllSDSchools"]);
