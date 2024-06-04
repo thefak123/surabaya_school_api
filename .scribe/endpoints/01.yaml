@@ -15,7 +15,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Api-Key: '{YOUR_AUTH_KEY}'
+      x-api-key: '{YOUR_AUTH_KEY}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -28,7 +28,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"success":true,"message":"success","data":[{"id":1,"name":"sekolah citra berkat","address":"wadaw","postal_code":22312,"school_type":"SD","phone_number":2131231231},{"id":2,"name":"sekolah citra berkat","address":"wadaw","postal_code":22312,"school_type":"SMP","phone_number":2131231231},{"id":3,"name":"sekolah citra berkat","address":"wadaw","postal_code":22312,"school_type":"SMA","phone_number":2131231231}]}'
+        content: '{"status":false,"message":"API_KEY IS NOT VALID","value":null}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -38,8 +38,8 @@ endpoints:
     responseFields: []
     auth:
       - headers
-      - Api-Key
-      - bVkPd48aZg6e63hf5cvDE1a
+      - x-api-key
+      - dfab58v6Za3PDh4gVEce16k
     controller: null
     method: null
     route: null
@@ -58,7 +58,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Api-Key: '{YOUR_AUTH_KEY}'
+      x-api-key: '{YOUR_AUTH_KEY}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -91,8 +91,8 @@ endpoints:
     responseFields: []
     auth:
       - headers
-      - Api-Key
-      - 8Vcvd3ekaEhgZ6b14aD56Pf
+      - x-api-key
+      - 1agh4d6kePDc6VvZf583baE
     controller: null
     method: null
     route: null
@@ -111,7 +111,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Api-Key: '{YOUR_AUTH_KEY}'
+      x-api-key: '{YOUR_AUTH_KEY}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -144,8 +144,8 @@ endpoints:
     responseFields: []
     auth:
       - headers
-      - Api-Key
-      - a6aZ3E6hP5vDk8gef41cbdV
+      - x-api-key
+      - 3D5EVd64efaZkcPhgav816b
     controller: null
     method: null
     route: null

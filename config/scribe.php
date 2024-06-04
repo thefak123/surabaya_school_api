@@ -80,7 +80,7 @@ return [
     'try_it_out' => [
         // Add a Try It Out button to your endpoints so consumers can test endpoints right from their browser.
         // Don't forget to enable CORS headers for your endpoints.
-        'enabled' => true,
+        'enabled' => false,
 
         // The base URL for the API tester to use (for example, you can set this to your staging URL).
         // Leave as null to use the current app URL when generating (config("app.url")).
@@ -105,7 +105,7 @@ return [
         // Where is the auth value meant to be sent in a request?
         // Options: query, body, basic, bearer, header (for custom header)
         'in' => 'header',
-        'name' => 'Api-Key',
+        'name' => 'x-api-key',
 
         // The value of the parameter to be used by Scribe to authenticate response calls.
         // This will NOT be included in the generated documentation. If empty, Scribe will use a random value.
@@ -121,7 +121,7 @@ return [
 
     // Text to place in the "Introduction" section, right after the `description`. Markdown and HTML are supported.
     'intro_text' => <<<INTRO
-This documentation aims to provide all the information you need to work with our API.
+This documentation aims to provide all the information you need to work with our API. In order to be working, you need API KEY, which is provided inside profile section
 
 <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
 You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>

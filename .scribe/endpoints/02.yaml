@@ -15,7 +15,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Api-Key: '{YOUR_AUTH_KEY}'
+      x-api-key: '{YOUR_AUTH_KEY}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -38,8 +38,8 @@ endpoints:
     responseFields: []
     auth:
       - headers
-      - Api-Key
-      - vc84geDZa5V16E3bakf6hPd
+      - x-api-key
+      - Vb518Z6fhakDac63gd4PevE
     controller: null
     method: null
     route: null
@@ -58,7 +58,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Api-Key: '{YOUR_AUTH_KEY}'
+      x-api-key: '{YOUR_AUTH_KEY}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -91,8 +91,8 @@ endpoints:
     responseFields: []
     auth:
       - headers
-      - Api-Key
-      - E8ab4d63Vk1hDfea5v6gcPZ
+      - x-api-key
+      - gEak4vd3PD6Zafbc816heV5
     controller: null
     method: null
     route: null
@@ -111,7 +111,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Api-Key: '{YOUR_AUTH_KEY}'
+      x-api-key: '{YOUR_AUTH_KEY}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -144,8 +144,8 @@ endpoints:
     responseFields: []
     auth:
       - headers
-      - Api-Key
-      - Z6fE16P8h5Da3avV4gckdbe
+      - x-api-key
+      - PhkceEV4Zd6g6b5f1a8avD3
     controller: null
     method: null
     route: null

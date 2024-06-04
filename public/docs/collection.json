@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "3a4b5d7b-85fc-43c6-bd94-35e12c076a13",
+        "_postman_id": "22b9d680-a74f-4c49-99f2-8f4c38e24bad",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -59,7 +59,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"success\":true,\"message\":\"success\",\"data\":[{\"id\":1,\"name\":\"sekolah citra berkat\",\"address\":\"wadaw\",\"postal_code\":22312,\"school_type\":\"SD\",\"phone_number\":2131231231},{\"id\":2,\"name\":\"sekolah citra berkat\",\"address\":\"wadaw\",\"postal_code\":22312,\"school_type\":\"SMP\",\"phone_number\":2131231231},{\"id\":3,\"name\":\"sekolah citra berkat\",\"address\":\"wadaw\",\"postal_code\":22312,\"school_type\":\"SMA\",\"phone_number\":2131231231}]}",
+                            "body": "{\"status\":false,\"message\":\"API_KEY IS NOT VALID\",\"value\":null}",
                             "name": ""
                         }
                     ]
@@ -708,7 +708,7 @@
             },
             {
                 "key": "key",
-                "value": "Api-Key",
+                "value": "x-api-key",
                 "type": "string"
             }
         ]

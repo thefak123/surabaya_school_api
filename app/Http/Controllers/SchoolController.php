@@ -30,7 +30,7 @@ class SchoolController extends Controller
     public function findByName(string $name)
     {
         //
-        return new RequestResource(true, "success", School::where("name", $name)->first());
+        return new RequestResource(true, "success", School::where("name", $name)->with("schoolType")->first());
     }
 
     /**
@@ -56,7 +56,7 @@ class SchoolController extends Controller
      public function findAllSDSchools()
      {
          
-         return new RequestResource(true, "success", School::where("school_type", "SD")->get());
+         return new RequestResource(true, "success", School::where("school_type", 1)->get());
      }
 
        /**
@@ -69,7 +69,7 @@ class SchoolController extends Controller
     public function findSDSchoolByName(string $name)
     {
         //
-        return new RequestResource(true, "success", School::where("school_type", "SD")->where("name", $name)->first());
+        return new RequestResource(true, "success", School::where("school_type", 1)->where("name", $name)->first());
     }
 
     /**
@@ -82,7 +82,7 @@ class SchoolController extends Controller
      public function findSDSchoolByPostalCode(string $postal_code)
      {
          //
-         return new RequestResource(true, "success", School::where("school_type", "SD")->where("postal_code", $postal_code)->first());
+         return new RequestResource(true, "success", School::where("school_type", 1)->where("postal_code", $postal_code)->first());
      }
 
 
@@ -96,7 +96,7 @@ class SchoolController extends Controller
      public function findAllSMPSchools()
      {
          
-         return new RequestResource(true, "success", School::where("school_type", "SMP")->get());
+         return new RequestResource(true, "success", School::where("school_type", 2)->get());
      }
 
      /**
@@ -109,7 +109,7 @@ class SchoolController extends Controller
     public function findSMPSchoolByName(string $name)
     {
         //
-        return new RequestResource(true, "success", School::where("school_type", "SMP")->where("name", $name)->first());
+        return new RequestResource(true, "success", School::where("school_type", 2)->where("name", $name)->first());
     }
 
     /**
@@ -122,7 +122,7 @@ class SchoolController extends Controller
      public function findSMPSchoolByPostalCode(string $postal_code)
      {
          //
-         return new RequestResource(true, "success", School::where("school_type", "SMP")->where("postal_code", $postal_code)->first());
+         return new RequestResource(true, "success", School::where("school_type", 2)->where("postal_code", $postal_code)->first());
      }
 
      /**
@@ -135,7 +135,7 @@ class SchoolController extends Controller
      public function findAllSMASchools()
      {
          
-         return new RequestResource(true, "success", School::where("school_type", "SMA")->where("school_type", "SMA")->get());
+         return new RequestResource(true, "success", School::where("school_type", 3)->where("school_type", "SMA")->get());
      }
 
      /**
@@ -148,7 +148,7 @@ class SchoolController extends Controller
     public function findSMASchoolByName(string $name)
     {
         //
-        return new RequestResource(true, "success", School::where("school_type", "SMA")->where("name", $name)->first());
+        return new RequestResource(true, "success", School::where("school_type", 3)->where("name", $name)->first());
     }
 
     /**
@@ -161,7 +161,7 @@ class SchoolController extends Controller
      public function findSMASchoolByPostalCode(string $postal_code)
      {
          //
-         return new RequestResource(true, "success", School::where("school_type", "SMA")->where("postal_code", $postal_code)->first());
+         return new RequestResource(true, "success", School::where("school_type", 3)->where("postal_code", $postal_code)->first());
      }
     
     

@@ -25,12 +25,6 @@
                     body .content .javascript-example code { display: none; }
             </style>
 
-    <script>
-        var tryItOutBaseUrl = "http://localhost";
-        var useCsrf = Boolean();
-        var csrfUrl = "/sanctum/csrf-cookie";
-    </script>
-    <script src="../docs/js/tryitout-4.36.0.js"></script>
 
     <script src="../docs/js/theme-default-4.36.0.js"></script>
 
@@ -149,7 +143,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: May 28, 2024</li>
+        <li>Last updated: June 4, 2024</li>
     </ul>
 </div>
 
@@ -165,7 +159,7 @@
 You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
-<p>To authenticate requests, include a <strong><code>Api-Key</code></strong> header with the value <strong><code>"{YOUR_AUTH_KEY}"</code></strong>.</p>
+<p>To authenticate requests, include a <strong><code>x-api-key</code></strong> header with the value <strong><code>"{YOUR_AUTH_KEY}"</code></strong>.</p>
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
 <p>You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.</p>
 
@@ -188,7 +182,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/schools" \
-    --header "Api-Key: {YOUR_AUTH_KEY}" \
+    --header "x-api-key: {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -199,7 +193,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 );
 
 const headers = {
-    "Api-Key": "{YOUR_AUTH_KEY}",
+    "x-api-key": "{YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -225,34 +219,9 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;success&quot;,
-    &quot;data&quot;: [
-        {
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;sekolah citra berkat&quot;,
-            &quot;address&quot;: &quot;wadaw&quot;,
-            &quot;postal_code&quot;: 22312,
-            &quot;school_type&quot;: &quot;SD&quot;,
-            &quot;phone_number&quot;: 2131231231
-        },
-        {
-            &quot;id&quot;: 2,
-            &quot;name&quot;: &quot;sekolah citra berkat&quot;,
-            &quot;address&quot;: &quot;wadaw&quot;,
-            &quot;postal_code&quot;: 22312,
-            &quot;school_type&quot;: &quot;SMP&quot;,
-            &quot;phone_number&quot;: 2131231231
-        },
-        {
-            &quot;id&quot;: 3,
-            &quot;name&quot;: &quot;sekolah citra berkat&quot;,
-            &quot;address&quot;: &quot;wadaw&quot;,
-            &quot;postal_code&quot;: 22312,
-            &quot;school_type&quot;: &quot;SMA&quot;,
-            &quot;phone_number&quot;: 2131231231
-        }
-    ]
+    &quot;status&quot;: false,
+    &quot;message&quot;: &quot;API_KEY IS NOT VALID&quot;,
+    &quot;value&quot;: null
 }</code>
  </pre>
     </span>
@@ -280,23 +249,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-schools', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-schools"
-                    onclick="tryItOut('GETapi-schools');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-schools"
-                    onclick="cancelTryOut('GETapi-schools');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-schools"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -304,11 +256,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Api-Key</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>x-api-key</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Api-Key" class="auth-value"               data-endpoint="GETapi-schools"
+                              name="x-api-key" class="auth-value"               data-endpoint="GETapi-schools"
                value="{YOUR_AUTH_KEY}"
                data-component="header">
     <br>
@@ -353,7 +305,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/schools/name/sekolah citra berkat" \
-    --header "Api-Key: {YOUR_AUTH_KEY}" \
+    --header "x-api-key: {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -364,7 +316,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Api-Key": "{YOUR_AUTH_KEY}",
+    "x-api-key": "{YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -427,23 +379,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-schools-name--name-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-schools-name--name-"
-                    onclick="tryItOut('GETapi-schools-name--name-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-schools-name--name-"
-                    onclick="cancelTryOut('GETapi-schools-name--name-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-schools-name--name-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -451,11 +386,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Api-Key</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>x-api-key</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Api-Key" class="auth-value"               data-endpoint="GETapi-schools-name--name-"
+                              name="x-api-key" class="auth-value"               data-endpoint="GETapi-schools-name--name-"
                value="{YOUR_AUTH_KEY}"
                data-component="header">
     <br>
@@ -512,7 +447,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/schools/postal/22312" \
-    --header "Api-Key: {YOUR_AUTH_KEY}" \
+    --header "x-api-key: {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -523,7 +458,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Api-Key": "{YOUR_AUTH_KEY}",
+    "x-api-key": "{YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -586,23 +521,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-schools-postal--postal_code-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-schools-postal--postal_code-"
-                    onclick="tryItOut('GETapi-schools-postal--postal_code-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-schools-postal--postal_code-"
-                    onclick="cancelTryOut('GETapi-schools-postal--postal_code-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-schools-postal--postal_code-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -610,11 +528,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Api-Key</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>x-api-key</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Api-Key" class="auth-value"               data-endpoint="GETapi-schools-postal--postal_code-"
+                              name="x-api-key" class="auth-value"               data-endpoint="GETapi-schools-postal--postal_code-"
                value="{YOUR_AUTH_KEY}"
                data-component="header">
     <br>
@@ -737,23 +655,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-user', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-user"
-                    onclick="tryItOut('GETapi-user');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-user"
-                    onclick="cancelTryOut('GETapi-user');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-user"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -803,7 +704,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/schools/elementary" \
-    --header "Api-Key: {YOUR_AUTH_KEY}" \
+    --header "x-api-key: {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -814,7 +715,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Api-Key": "{YOUR_AUTH_KEY}",
+    "x-api-key": "{YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -879,23 +780,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-schools-elementary', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-schools-elementary"
-                    onclick="tryItOut('GETapi-schools-elementary');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-schools-elementary"
-                    onclick="cancelTryOut('GETapi-schools-elementary');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-schools-elementary"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -903,11 +787,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Api-Key</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>x-api-key</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Api-Key" class="auth-value"               data-endpoint="GETapi-schools-elementary"
+                              name="x-api-key" class="auth-value"               data-endpoint="GETapi-schools-elementary"
                value="{YOUR_AUTH_KEY}"
                data-component="header">
     <br>
@@ -952,7 +836,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/schools/elementary/sekolah citra berkat" \
-    --header "Api-Key: {YOUR_AUTH_KEY}" \
+    --header "x-api-key: {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -963,7 +847,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Api-Key": "{YOUR_AUTH_KEY}",
+    "x-api-key": "{YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1026,23 +910,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-schools-elementary--name-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-schools-elementary--name-"
-                    onclick="tryItOut('GETapi-schools-elementary--name-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-schools-elementary--name-"
-                    onclick="cancelTryOut('GETapi-schools-elementary--name-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-schools-elementary--name-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -1050,11 +917,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Api-Key</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>x-api-key</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Api-Key" class="auth-value"               data-endpoint="GETapi-schools-elementary--name-"
+                              name="x-api-key" class="auth-value"               data-endpoint="GETapi-schools-elementary--name-"
                value="{YOUR_AUTH_KEY}"
                data-component="header">
     <br>
@@ -1111,7 +978,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/schools/elementary/22312" \
-    --header "Api-Key: {YOUR_AUTH_KEY}" \
+    --header "x-api-key: {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -1122,7 +989,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Api-Key": "{YOUR_AUTH_KEY}",
+    "x-api-key": "{YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1178,23 +1045,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-schools-elementary--postal_code-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-schools-elementary--postal_code-"
-                    onclick="tryItOut('GETapi-schools-elementary--postal_code-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-schools-elementary--postal_code-"
-                    onclick="cancelTryOut('GETapi-schools-elementary--postal_code-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-schools-elementary--postal_code-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -1202,11 +1052,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Api-Key</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>x-api-key</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Api-Key" class="auth-value"               data-endpoint="GETapi-schools-elementary--postal_code-"
+                              name="x-api-key" class="auth-value"               data-endpoint="GETapi-schools-elementary--postal_code-"
                value="{YOUR_AUTH_KEY}"
                data-component="header">
     <br>
@@ -1267,7 +1117,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/schools/junior" \
-    --header "Api-Key: {YOUR_AUTH_KEY}" \
+    --header "x-api-key: {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -1278,7 +1128,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Api-Key": "{YOUR_AUTH_KEY}",
+    "x-api-key": "{YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1343,23 +1193,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-schools-junior', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-schools-junior"
-                    onclick="tryItOut('GETapi-schools-junior');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-schools-junior"
-                    onclick="cancelTryOut('GETapi-schools-junior');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-schools-junior"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -1367,11 +1200,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Api-Key</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>x-api-key</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Api-Key" class="auth-value"               data-endpoint="GETapi-schools-junior"
+                              name="x-api-key" class="auth-value"               data-endpoint="GETapi-schools-junior"
                value="{YOUR_AUTH_KEY}"
                data-component="header">
     <br>
@@ -1416,7 +1249,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/schools/junior/sekolah citra berkat" \
-    --header "Api-Key: {YOUR_AUTH_KEY}" \
+    --header "x-api-key: {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -1427,7 +1260,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Api-Key": "{YOUR_AUTH_KEY}",
+    "x-api-key": "{YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1490,23 +1323,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-schools-junior--name-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-schools-junior--name-"
-                    onclick="tryItOut('GETapi-schools-junior--name-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-schools-junior--name-"
-                    onclick="cancelTryOut('GETapi-schools-junior--name-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-schools-junior--name-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -1514,11 +1330,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Api-Key</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>x-api-key</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Api-Key" class="auth-value"               data-endpoint="GETapi-schools-junior--name-"
+                              name="x-api-key" class="auth-value"               data-endpoint="GETapi-schools-junior--name-"
                value="{YOUR_AUTH_KEY}"
                data-component="header">
     <br>
@@ -1575,7 +1391,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/schools/junior/22312" \
-    --header "Api-Key: {YOUR_AUTH_KEY}" \
+    --header "x-api-key: {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -1586,7 +1402,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Api-Key": "{YOUR_AUTH_KEY}",
+    "x-api-key": "{YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1642,23 +1458,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-schools-junior--postal_code-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-schools-junior--postal_code-"
-                    onclick="tryItOut('GETapi-schools-junior--postal_code-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-schools-junior--postal_code-"
-                    onclick="cancelTryOut('GETapi-schools-junior--postal_code-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-schools-junior--postal_code-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -1666,11 +1465,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Api-Key</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>x-api-key</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Api-Key" class="auth-value"               data-endpoint="GETapi-schools-junior--postal_code-"
+                              name="x-api-key" class="auth-value"               data-endpoint="GETapi-schools-junior--postal_code-"
                value="{YOUR_AUTH_KEY}"
                data-component="header">
     <br>
@@ -1731,7 +1530,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/schools/senior" \
-    --header "Api-Key: {YOUR_AUTH_KEY}" \
+    --header "x-api-key: {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -1742,7 +1541,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Api-Key": "{YOUR_AUTH_KEY}",
+    "x-api-key": "{YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1807,23 +1606,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-schools-senior', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-schools-senior"
-                    onclick="tryItOut('GETapi-schools-senior');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-schools-senior"
-                    onclick="cancelTryOut('GETapi-schools-senior');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-schools-senior"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -1831,11 +1613,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Api-Key</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>x-api-key</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Api-Key" class="auth-value"               data-endpoint="GETapi-schools-senior"
+                              name="x-api-key" class="auth-value"               data-endpoint="GETapi-schools-senior"
                value="{YOUR_AUTH_KEY}"
                data-component="header">
     <br>
@@ -1880,7 +1662,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/schools/senior/sekolah citra berkat" \
-    --header "Api-Key: {YOUR_AUTH_KEY}" \
+    --header "x-api-key: {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -1891,7 +1673,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Api-Key": "{YOUR_AUTH_KEY}",
+    "x-api-key": "{YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1954,23 +1736,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-schools-senior--name-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-schools-senior--name-"
-                    onclick="tryItOut('GETapi-schools-senior--name-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-schools-senior--name-"
-                    onclick="cancelTryOut('GETapi-schools-senior--name-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-schools-senior--name-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -1978,11 +1743,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Api-Key</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>x-api-key</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Api-Key" class="auth-value"               data-endpoint="GETapi-schools-senior--name-"
+                              name="x-api-key" class="auth-value"               data-endpoint="GETapi-schools-senior--name-"
                value="{YOUR_AUTH_KEY}"
                data-component="header">
     <br>
@@ -2039,7 +1804,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/schools/senior/22312" \
-    --header "Api-Key: {YOUR_AUTH_KEY}" \
+    --header "x-api-key: {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -2050,7 +1815,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Api-Key": "{YOUR_AUTH_KEY}",
+    "x-api-key": "{YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -2106,23 +1871,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-schools-senior--postal_code-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-schools-senior--postal_code-"
-                    onclick="tryItOut('GETapi-schools-senior--postal_code-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-schools-senior--postal_code-"
-                    onclick="cancelTryOut('GETapi-schools-senior--postal_code-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-schools-senior--postal_code-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -2130,11 +1878,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Api-Key</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>x-api-key</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Api-Key" class="auth-value"               data-endpoint="GETapi-schools-senior--postal_code-"
+                              name="x-api-key" class="auth-value"               data-endpoint="GETapi-schools-senior--postal_code-"
                value="{YOUR_AUTH_KEY}"
                data-component="header">
     <br>

@@ -15,7 +15,7 @@ paths:
       parameters:
         -
           in: header
-          name: Api-Key
+          name: x-api-key
           description: ''
           example: '{YOUR_AUTH_KEY}'
           schema:
@@ -28,82 +28,19 @@ paths:
               schema:
                 type: object
                 example:
-                  success: true
-                  message: success
-                  data:
-                    -
-                      id: 1
-                      name: 'sekolah citra berkat'
-                      address: wadaw
-                      postal_code: 22312
-                      school_type: SD
-                      phone_number: 2131231231
-                    -
-                      id: 2
-                      name: 'sekolah citra berkat'
-                      address: wadaw
-                      postal_code: 22312
-                      school_type: SMP
-                      phone_number: 2131231231
-                    -
-                      id: 3
-                      name: 'sekolah citra berkat'
-                      address: wadaw
-                      postal_code: 22312
-                      school_type: SMA
-                      phone_number: 2131231231
+                  status: false
+                  message: 'API_KEY IS NOT VALID'
+                  value: null
                 properties:
-                  success:
+                  status:
                     type: boolean
-                    example: true
+                    example: false
                   message:
                     type: string
-                    example: success
-                  data:
-                    type: array
-                    example:
-                      -
-                        id: 1
-                        name: 'sekolah citra berkat'
-                        address: wadaw
-                        postal_code: 22312
-                        school_type: SD
-                        phone_number: 2131231231
-                      -
-                        id: 2
-                        name: 'sekolah citra berkat'
-                        address: wadaw
-                        postal_code: 22312
-                        school_type: SMP
-                        phone_number: 2131231231
-                      -
-                        id: 3
-                        name: 'sekolah citra berkat'
-                        address: wadaw
-                        postal_code: 22312
-                        school_type: SMA
-                        phone_number: 2131231231
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                          example: 1
-                        name:
-                          type: string
-                          example: 'sekolah citra berkat'
-                        address:
-                          type: string
-                          example: wadaw
-                        postal_code:
-                          type: integer
-                          example: 22312
-                        school_type:
-                          type: string
-                          example: SD
-                        phone_number:
-                          type: integer
-                          example: 2131231231
+                    example: 'API_KEY IS NOT VALID'
+                  value:
+                    type: string
+                    example: null
       tags:
         - 'All Surabaya School'
   '/api/schools/name/{name}':
@@ -114,7 +51,7 @@ paths:
       parameters:
         -
           in: header
-          name: Api-Key
+          name: x-api-key
           description: ''
           example: '{YOUR_AUTH_KEY}'
           schema:
@@ -183,7 +120,7 @@ paths:
       parameters:
         -
           in: header
-          name: Api-Key
+          name: x-api-key
           description: ''
           example: '{YOUR_AUTH_KEY}'
           schema:
@@ -274,7 +211,7 @@ paths:
       parameters:
         -
           in: header
-          name: Api-Key
+          name: x-api-key
           description: ''
           example: '{YOUR_AUTH_KEY}'
           schema:
@@ -345,7 +282,7 @@ paths:
       parameters:
         -
           in: header
-          name: Api-Key
+          name: x-api-key
           description: ''
           example: '{YOUR_AUTH_KEY}'
           schema:
@@ -414,7 +351,7 @@ paths:
       parameters:
         -
           in: header
-          name: Api-Key
+          name: x-api-key
           description: ''
           example: '{YOUR_AUTH_KEY}'
           schema:
@@ -459,7 +396,7 @@ paths:
       parameters:
         -
           in: header
-          name: Api-Key
+          name: x-api-key
           description: ''
           example: '{YOUR_AUTH_KEY}'
           schema:
@@ -530,7 +467,7 @@ paths:
       parameters:
         -
           in: header
-          name: Api-Key
+          name: x-api-key
           description: ''
           example: '{YOUR_AUTH_KEY}'
           schema:
@@ -599,7 +536,7 @@ paths:
       parameters:
         -
           in: header
-          name: Api-Key
+          name: x-api-key
           description: ''
           example: '{YOUR_AUTH_KEY}'
           schema:
@@ -644,7 +581,7 @@ paths:
       parameters:
         -
           in: header
-          name: Api-Key
+          name: x-api-key
           description: ''
           example: '{YOUR_AUTH_KEY}'
           schema:
@@ -715,7 +652,7 @@ paths:
       parameters:
         -
           in: header
-          name: Api-Key
+          name: x-api-key
           description: ''
           example: '{YOUR_AUTH_KEY}'
           schema:
@@ -784,7 +721,7 @@ paths:
       parameters:
         -
           in: header
-          name: Api-Key
+          name: x-api-key
           description: ''
           example: '{YOUR_AUTH_KEY}'
           schema:
@@ -841,7 +778,7 @@ components:
   securitySchemes:
     default:
       type: apiKey
-      name: Api-Key
+      name: x-api-key
       in: header
       description: 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.'
 security:
