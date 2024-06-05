@@ -40,8 +40,9 @@
     <script src="../docs/js/tryitout-4.36.0.js"></script>
 
     <script src="../docs/js/theme-default-4.36.0.js"></script>
-
     {{--  End of laravel scribe --}}
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -65,11 +66,17 @@
 
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="bg-white dark:bg-gray-800 shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <header class="">
+                <div class="">
                     {{ $header }}
                 </div>
             </header>
+
+            {{-- <header class="bg-white dark:bg-gray-800 shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    {{ $header }}
+                </div>
+            </header> --}}
         @endif
 
         <!-- Page Content -->
