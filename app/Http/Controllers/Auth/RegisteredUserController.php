@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -45,6 +46,7 @@ class RegisteredUserController extends Controller
             'API_KEY' => $api_key,
         ]);
 
+        
         event(new Registered($user));
 
         Auth::login($user);

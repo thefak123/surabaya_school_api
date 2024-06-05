@@ -2,7 +2,11 @@
 
 namespace App\Http\Resources;
 
+use App\Models\School;
+use App\Models\SchoolType;
 use Illuminate\Http\Resources\Json\JsonResource;
+
+
 
 class RequestResource extends JsonResource
 {

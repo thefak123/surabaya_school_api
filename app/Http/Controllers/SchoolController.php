@@ -4,165 +4,92 @@ namespace App\Http\Controllers;
 
 use App\Models\School;
 use App\Http\Resources\RequestResource;
+use App\Models\SchoolType;
 use Illuminate\Http\Request;
 
 class SchoolController extends Controller
 {
     /**
-     * Display a listing of the school in Surabaya.
-     * @group All Surabaya School
+     * Display all schools in surabaya by name, tingkat sekolah and postal code.
+     * @response array{success:bool, message: string, data: array{id:int, name: string, address: string, postal_code: int, school_type_id: int, phone_number: string, updated_at: date, created_at: date, school_type: array{id: int, name: string}}[]}
+     * @group School
      * @authenticated
      */
     
-    public function index()
-    {
-        //
-        return new RequestResource(true, "success", School::all());
-    }
-
-    /**
-     * Display the specified school in surabaya by name.
-     * @urlParam name string required The school name. Example: sekolah citra berkat
-     * @group All Surabaya School
-     * @authenticated
-     */
-
-    public function findByName(string $name)
-    {
-        //
-        return new RequestResource(true, "success", School::where("name", $name)->with("schoolType")->first());
-    }
-
-    /**
-     * Display the specified school in surabaya by postal code.
-     * @urlParam postal_code int required The school name. Example: 22312
-     * @group All Surabaya School
-     * @authenticated
-     */
-
-     public function findByPostalCode(string $postal_code)
-     {
-         //
-         return new RequestResource(true, "success", School::where("postal_code", $postal_code)->first());
-     }
     
-     /**
-     * Display all of elementary school in surabaya.
-     
-     * @group Surabaya Elementary School
-     * @authenticated
-     */
-
-     public function findAllSDSchools()
-     {
-         
-         return new RequestResource(true, "success", School::where("school_type", 1)->get());
-     }
-
-       /**
-     * Display the specified school in surabaya by name.
-     * @urlParam name string required The school name. Example: sekolah citra berkat
-     * @group Surabaya Elementary School
-     * @authenticated
-     */
-
-    public function findSDSchoolByName(string $name)
+    public function index(Request $request)
     {
         //
-        return new RequestResource(true, "success", School::where("school_type", 1)->where("name", $name)->first());
+        $schools = School::query();
+        $name = $request->query("name");
+        $tingkat_sekolah = $request->query("tingkat_sekolah");
+        $postal_code = $request->query("postal_code");
+            // Apply conditions based on parameters
+        if ($name != null) {
+            $schools->where("name", $name);
+        }
+
+        if ( $tingkat_sekolah != null) {
+            $schoolTypeId = SchoolType::where("name", $tingkat_sekolah)->first();
+            $schools->where("tingkat_sekolah", $schoolTypeId->id);
+        }
+
+        if ($postal_code != null) {
+            $schools->where("postal_code", $postal_code);
+        }
+
+        $schools = $schools->with("schoolType")->get();
+        return new RequestResource(true, "success", $schools);
     }
 
     /**
-     * Display the specified school in surabaya by postal code.
-     * @urlParam postal_code int required The school name. Example: 22312
-     * @group Surabaya Elementary School
+     * Display school by id
+     * @response array{success:bool, message: string, data: array{id:int, name: string, address: string, postal_code: int, school_type_id: int, phone_number: string, updated_at: date, created_at: date, school_type: array{id: int, name: string}}}
+     * @group School
      * @authenticated
      */
 
-     public function findSDSchoolByPostalCode(string $postal_code)
-     {
-         //
-         return new RequestResource(true, "success", School::where("school_type", 1)->where("postal_code", $postal_code)->first());
-     }
-
-
-     /**
-     * Display all of junior high school in surabaya.
-     
-     * @group Surabaya Junior High School
-     * @authenticated
-     */
-
-     public function findAllSMPSchools()
-     {
-         
-         return new RequestResource(true, "success", School::where("school_type", 2)->get());
-     }
-
-     /**
-     * Display the specified school in surabaya by name.
-     * @urlParam name string required The school name. Example: sekolah citra berkat
-     * @group Surabaya Junior High School
-     * @authenticated
-     */
-
-    public function findSMPSchoolByName(string $name)
+    public function findById($id)
     {
         //
-        return new RequestResource(true, "success", School::where("school_type", 2)->where("name", $name)->first());
+        $schools = School::find($id);
+        
+        return new RequestResource(true, "success", $schools);
     }
 
     /**
-     * Display the specified school in surabaya by postal code.
-     * @urlParam postal_code int required The school name. Example: 22312
-     * @group Surabaya Junior High School
+     * Display all school phone numbers
+     * @response array{success:bool, message: string, data: array{id:int, name: string, phone_number: string, school_type: array{id: int, name: string}}}
+     * @group School
      * @authenticated
      */
 
-     public function findSMPSchoolByPostalCode(string $postal_code)
+     public function getPhoneNumbers()
      {
          //
-         return new RequestResource(true, "success", School::where("school_type", 2)->where("postal_code", $postal_code)->first());
+        
+        $schools = School::query()->select("id", "name", "phone_number", "school_type_id")->get();
+        
+        return new RequestResource(true, "success", $schools);
      }
 
      /**
-     * Display all of Senior High School in surabaya.
-     
-     * @group Surabaya Senior High School
+     * Display all school addresses
+     * @response array{success:bool, message: string, data: array{id:int, name: string, phone_number: string, school_type: array{id: int, name: string}}}
+     * @group School
      * @authenticated
      */
 
-     public function findAllSMASchools()
-     {
-         
-         return new RequestResource(true, "success", School::where("school_type", 3)->where("school_type", "SMA")->get());
-     }
-
-     /**
-     * Display the specified school in surabaya by name.
-     * @urlParam name string required The school name. Example: sekolah citra berkat
-     * @group Surabaya Senior High School
-     * @authenticated
-     */
-
-    public function findSMASchoolByName(string $name)
-    {
-        //
-        return new RequestResource(true, "success", School::where("school_type", 3)->where("name", $name)->first());
-    }
-
-    /**
-     * Display the specified school in surabaya by postal code.
-     * @urlParam postal_code int required The school name. Example: 22312
-     * @group Surabaya Senior High School
-     * @authenticated
-     */
-
-     public function findSMASchoolByPostalCode(string $postal_code)
+     public function getAllSchoolAddresses()
      {
          //
-         return new RequestResource(true, "success", School::where("school_type", 3)->where("postal_code", $postal_code)->first());
+   
+         $schools = School::select("id", "name", "address", "school_type_id")->with("schoolType")->get();
+         return new RequestResource(true, "success", $schools);
      }
+
     
+
+  
     
 }

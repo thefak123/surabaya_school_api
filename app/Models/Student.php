@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Student extends Model
 {
     use HasFactory;
-
+    protected $hidden = ['created_at', 'updated_at'];
     protected $with = ['school', 'gender'];
 
     public function school(): BelongsTo
