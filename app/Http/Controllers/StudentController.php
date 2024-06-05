@@ -88,7 +88,7 @@ class StudentController extends Controller
          //
    
         
-         return new RequestResource(true, "success", Student::all());
+         return new RequestResource(true, "success", Student::select("id", "name", "phone_number", "gender_id", "school_id")->get());
      }
 
      /**
@@ -103,7 +103,7 @@ class StudentController extends Controller
          //
    
         
-         return new RequestResource(true, "success", Student::select("id", "name", "address")->get());
+         return new RequestResource(true, "success", Student::select("id", "name", "address", "gender_id", "school_id")->get());
      }
 
  

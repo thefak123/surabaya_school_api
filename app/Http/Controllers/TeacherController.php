@@ -82,7 +82,7 @@ class TeacherController extends Controller
          //
    
         
-         return new RequestResource(true, "success", Teacher::select("id", "name", "phone_number", "school_id")->get());
+         return new RequestResource(true, "success", Teacher::select("id", "name", "phone_number", "school_id", "gender_id")->get());
      }
 
      /**
@@ -97,6 +97,6 @@ class TeacherController extends Controller
          //
    
         
-         return new RequestResource(true, "success", Teacher::select("id", "name", "address", "school_id")->get());
+         return new RequestResource(true, "success", Teacher::select("id", "name", "address", "school_id", "gender_id")->get());
      }
 }
