@@ -14,7 +14,7 @@ class Student extends Model
 
     public function school(): BelongsTo
     {
-        return $this->belongsTo(SchoolType::class)->withDefault();
+        return $this->belongsTo(School::class)->withDefault();
     }
 
     public function gender(): BelongsTo

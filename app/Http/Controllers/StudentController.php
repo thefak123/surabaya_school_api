@@ -29,35 +29,48 @@ class StudentController extends Controller
         $tingkat_sekolah = $request->query("tingkat_sekolah");
         $school_name = $request->query("nama_sekolah");
         $gender = $request->query("gender");
-        $postal_code = $request->query("postal_code");
+        
             // Apply conditions based on parameters
         if ($name != null) {
-            $student->where("name", $name);
+            $student->where('name', 'like', '%' . $name . '%');
         }
 
-        if ($postal_code != null) {
-            $student->where("postal_code", $postal_code);
-        }
+        
 
-        $student = $student->with(['gender' => function (Builder $query) use ($gender) {
-            if ( $gender != null) {
+      
+        if ( $gender != null) {
+        $student = $student->whereHas('gender', function (Builder $query) use ($gender) {
+            
                 $query->where("gender", $gender);
-            }
+            
            
-        }])->with(["school" => function (Builder $query) use ($school_name, $tingkat_sekolah) {
-            if ($school_name != null) {
-                $query->where("name", $school_name);
-            }
-    
-            if ( $tingkat_sekolah != null) {
-                $query->with(["schoolType" => function(Builder $queryChild) use ($tingkat_sekolah){
-                    $queryChild->where("name", $tingkat_sekolah);
-                }]);
-            }
-        }])->get();
+        });
+        
+        if($school_name != null)
+            $student = $student->whereHas("school", function (Builder $query) use ($school_name) {
+            
+            
+                $query->where('name', 'like', '%' . $school_name . '%');
+            
+            });
+        }
+
+        if($tingkat_sekolah != null){
+            
+            $student = $student->whereHas("school", function (Builder $query) use ($tingkat_sekolah) {
+            
+            
+                $query->whereHas("schoolType", function(Builder $queryChild) use ($tingkat_sekolah){
+                    $queryChild->where('name', 'like', '%' . $tingkat_sekolah . '%');
+                });
+            
+            });
+        }
+
+        $student = $student->with("school.schoolType");
 
 
-        return new RequestResource(true, "success", $student);
+        return new RequestResource(true, "success", $student->get());
         
     }
     /**

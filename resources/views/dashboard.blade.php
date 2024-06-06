@@ -1,3 +1,9 @@
+@php
+    use Illuminate\Support\Facades\Request;
+    $hostName =  Request::getHost();
+    $port =Request::getPort();
+@endphp
+
 <x-app-layout>
     <style>
         iframe {
@@ -6,13 +12,9 @@
             border: none;
         }
     </style>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+    
     <div class="content">
-        <iframe src="http://localhost:8000/docs/api" width="800" height="600" frameborder="0"></iframe>
+        <iframe src={{"http://". $hostName . ":" . $port . "/docs/api"}} width="800" height="600" frameborder="0"></iframe>
     </div>
     {{-- {!! file_get_contents(public_path('docs/index.html')) !!} --}}
     

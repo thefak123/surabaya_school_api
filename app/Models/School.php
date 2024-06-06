@@ -10,7 +10,7 @@ class School extends Model
 {
     use HasFactory;
     protected $hidden = ['created_at', 'updated_at'];
-    protected $with = ['schoolType'];
+ 
     
     public function schoolType(): BelongsTo
     {

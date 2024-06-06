@@ -26,16 +26,16 @@ class SchoolController extends Controller
         $postal_code = $request->query("postal_code");
             // Apply conditions based on parameters
         if ($name != null) {
-            $schools->where("name", $name);
+            $schools->where('name', 'like', '%' . $name . '%');
         }
 
         if ( $tingkat_sekolah != null) {
-            $schoolTypeId = SchoolType::where("name", $tingkat_sekolah)->first();
-            $schools->where("tingkat_sekolah", $schoolTypeId->id);
+            $schoolTypeId = SchoolType::where("name", 'like', '%' . $tingkat_sekolah . '%')->first();
+            $schools->where("school_type_id", $schoolTypeId->id);
         }
 
         if ($postal_code != null) {
-            $schools->where("postal_code", $postal_code);
+            $schools->where('postal_code', 'like', '%' . $postal_code . '%');
         }
 
         $schools = $schools->with("schoolType")->get();
@@ -68,7 +68,7 @@ class SchoolController extends Controller
      {
          //
         
-        $schools = School::query()->select("id", "name", "phone_number", "school_type_id")->get();
+        $schools = School::query()->select("id", "name", "phone_number", "school_type_id")->with("schoolType")->get();
         
         return new RequestResource(true, "success", $schools);
      }

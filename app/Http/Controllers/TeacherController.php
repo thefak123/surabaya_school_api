@@ -28,30 +28,41 @@ class TeacherController extends Controller
        
             // Apply conditions based on parameters
         if ($name != null) {
-            $teacher->where("name", $name);
+            $teacher->where('name', 'like', '%' . $name . '%');
         }
 
-        
-
-
-        $teacher = $teacher->with(['gender' => function (Builder $query) use ($gender) {
-            if ( $gender != null) {
-                $query->where("gender", $gender);
-            }
+      
+        if ( $gender != null) {
+        $teacher = $teacher->whereHas('gender', function (Builder $query) use ($gender) {
+            
+                $query->where('gender', 'like', '%' . $gender . '%');
+            
            
-        }])->with(["school" => function (Builder $query) use ($school_name, $tingkat_sekolah) {
-            if ($school_name != null) {
-                $query->where("name", $school_name);
-            }
-    
-            if ( $tingkat_sekolah != null) {
-                $query->with(["schoolType" => function(Builder $queryChild) use ($tingkat_sekolah){
-                    $queryChild->where("name", $tingkat_sekolah);
-                }]);
-            }
+        });
+        }
+        if($school_name != null){ 
+            $teacher = $teacher->whereHas("school", function (Builder $query) use ($school_name) {
+            
+            
+                $query->where('name', 'like', '%' . $school_name . '%');
+            
+            });
+        }
+
+        if($tingkat_sekolah != null){
            
-        }])->get();
-        return new RequestResource(true, "success", $teacher);
+            $teacher = $teacher->whereHas("school", function (Builder $query) use ($tingkat_sekolah) {
+            
+            
+                $query->whereHas("schoolType", function(Builder $queryChild) use ($tingkat_sekolah){
+                    $queryChild->where('name', 'like', '%' . $tingkat_sekolah . '%');
+                });
+            
+            });
+        }
+
+        $teacher = $teacher->with("school.schoolType");
+        return new RequestResource(true, "success", $teacher->get());
         
     }
 
